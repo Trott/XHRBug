@@ -1,0 +1,21 @@
+<title>Simple XHR Test</title>
+
+<h1>Simple XHR Test</h1>
+<p id="results">Running the test...</p>
+
+<script>
+function reqListener (result) {
+	var resultElement = document.getElementById('results');
+	var resultText = JSON.stringify(result, null, 4);
+	if ("textContent" in resultElement) {
+        resultElement.textContent = resultText;
+    } else {
+        resultElement.innerText = resultText;
+    }
+};
+
+var oReq = new XMLHttpRequest();
+oReq.onload = reqListener;
+oReq.open('GET', 'http://apis.ucsf.edu/shuttle/stops');
+oReq.send();
+</script>
